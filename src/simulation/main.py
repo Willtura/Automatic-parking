@@ -24,7 +24,7 @@ def start_simulator() -> None:
     lidar = SimLidar(client)
     lidar.start()
 
-    parking_handler = ParkingHandler(can_controller, lidar)
+    parking_handler = ParkingHandler(speed_controller, lidar)
 
     speed_controller.toggle()
 

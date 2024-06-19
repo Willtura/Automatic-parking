@@ -19,15 +19,15 @@ class ParkingHandler():
     __speed_controller: ISpeedController
     __can_controller: ICANController
 
-    def __init__(self, controller: ICANController, lidar: BaseLidar) -> None:
+    def __init__(self, speed_controller: ISpeedController, lidar: BaseLidar) -> None:
         """Initializes the parking handler.
 
-        :param controller: The object controller.
+        :param controller: The controller.
         :param lidar: The lidar sensor.
         """
         self.__lidar = lidar
-        #self.__speed_controller = controller.speed_controller
-        #self.__can_controller = controller.speed_controller.can_controller
+        self.__speed_controller = speed_controller
+        self.__can_controller = speed_controller.can_controller
 
     def wait_for_wall(self) -> None:
         """Wait until the lidar detects a wall."""
