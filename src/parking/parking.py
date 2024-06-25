@@ -4,7 +4,7 @@ import numpy as np
 import time
 
 from src.config import config
-from src.constants import Gear, Label
+from src.constants import Gear
 from src.driving.can import ICANController
 from src.driving.speed_controller import ISpeedController, SpeedControllerState
 

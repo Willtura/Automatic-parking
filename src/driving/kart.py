@@ -1,6 +1,4 @@
-import time
 
-from typing import Any
 
 from src.driving.can import CANController, get_can_bus
 from src.driving.modes import AutonomousDriving, DrivingMode, ManualDriving
