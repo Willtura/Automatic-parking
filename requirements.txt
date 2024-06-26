@@ -1,0 +1,9 @@
+PyYAML==6.0.1
+numpy==1.26.4
+python-can==4.3.1
+rplidar-roboticia==0.9.5
+airsim == 1.8.1
+matplotlib==3.8.3
+adafruit-rplidar==0.0.1
+rplidar-roboticia==0.9.5
+opencv-python==4.10.0.84

@@ -1,0 +1,166 @@
+# Kart
+kart:
+  max_steering_angle: 20
+
+  speed_modes:
+    selected: 10
+    options:
+      slow: 10
+      normal: 20
+      fast: 30
+      very_fast: 40
+
+  braking:
+    margin: 1.0
+    max_force: 50
+    min_force: 30
+
+# Lane Assist
+preprocessing:
+  gamma:
+    enabled: true
+    left: 0.62
+    center: 1.0
+    right: 0.62
+  white_threshold: 180
+  filter_threshold: 170
+
+line_detection:
+  max_angle_difference: 30  # degrees
+  max_angle_junction: 60  # degrees
+
+  window:
+    height: 0.5  # meters
+    min_width: 1.0  # meters
+    max_width: 2.0  # meters
+
+    min_pixels: 3
+    min_shift: 0.3  # percentage, relative to the window height.
+    margin_growth: 0.3  # percentage, relative to the window height.
+
+  thresholds:
+    zebra_crossing: 0.6  # meters
+
+  filtering:
+    active: true
+    rel_height: 0.95  # percentage
+    min_distance: 1.0  # meters
+    margin: 0.2  # meters
+
+line_following:
+  requested_lane:
+    override: false
+    lane: 0
+
+  initial_speed: 5  # km/h
+
+  no_lane_offset: 1.5  # meters
+  max_steering_range: 20  # degrees
+  look_ahead_distance: .5  # meters
+
+  pid:
+    kp: 20.0
+    ki: 1.0
+    kd: 0.5
+
+dynamic_speed:
+  friction_coefficient: 0.3
+  static: true
+  static_speed: 4
+
+camera_ids:
+  left: 0
+  center: 0
+  right: 0
+
+# Camera Calibration
+calibration:
+  aruco_dict: 1  # DICT_4X4_100
+  board_height: 8
+  board_width: 10
+  calibration_file: "./data/calibration/latest.npz"
+  max_image_height: 250
+  max_image_width: 250
+  marker_length: 0.086
+  render_distance:
+    front: 12.0
+    side: 6.0
+  save_dir: "./data/calibration"
+  square_length: 0.115
+  vanishing_line_offset: 0.02
+
+# Object Detection
+object_detection:
+  model_path: "./models/yolo8s.pt"
+  max_frame_rate: 10.0
+  min_confidence: 0.6
+  verbose: false
+  image_size: 1280
+
+speed_limit:
+  height_ratio: 3.1
+  min_distance: 3
+  class_to_speed:
+    6: 10
+    7: 15
+    8: 20
+
+traffic_light:
+  min_distance: 2
+
+overtake:
+  consecutive_frames: 3
+  force_move:
+    enabled: true
+    angle: 1.0  # percentage
+    duration: 0.5  # seconds
+  force_return:
+    enabled: true
+    angle: 1.0  # percentage
+    duration: 0.5  # seconds
+  min_distance: 6
+  min_angle: 230
+  max_angle: 280
+  range_threshold: 3000
+
+parking:
+  min_distance: 900 # millimeters
+  steering_angle: 1.25
+  speed: 5 # km/h
+  kart_length: 1300
+  angle_threshold: 230
+  rightmost_point_max: 320
+  corner_angle: 240
+
+  side_angles:
+    right: [265, 275]
+
+  free_side:
+    max_distance: 3000 # millimeters
+
+  wait_for_opening:
+    max_angle: 290
+
+
+crosswalk:
+  lost_frames: 10
+  min_distance: 3
+  overlap_margin: 0.25
+  safe_zone_margin: 0.15
+
+# Other
+telemetry:
+  enabled: true
+  server:
+    port: 8000
+    host: 0.0.0.0
+    root_url: 192.168.1.89
+
+gamepad:
+  max_trig_bits: 10
+  max_joy_bits: 15
+
+lidar:
+  port_name: "/dev/ttyUSB0"
+  min_distance: 500
+  max_distance_between_points: 1000
