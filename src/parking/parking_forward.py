@@ -47,7 +47,7 @@ class Forward_ParkingHandler():
                 continue
 
             if phase == 1:
-                if self.__lidar.free_range(260, 280, 2500):
+                if self.__lidar.free_range(260, 283, 2500):
                     self.__can_controller.set_steering(1.25)
                     #self.controller.lane_assist.toggle()
                     initial_distance = self.__lidar.find_obstacle_distance(155, 240)

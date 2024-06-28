@@ -33,6 +33,6 @@ def start_simulator() -> None:
     speed_controller.state = SpeedControllerState.PARKING
     speed_controller.target_speed = config["parking"]["speed"]
 
-    #parking_handler.wait_for_wall()
+    parking_handler.wait_for_wall()
 
-    forward_parkinghandler.forward_park()
+    #forward_parkinghandler.forward_park()
