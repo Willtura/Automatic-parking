@@ -115,9 +115,11 @@ class ParkingHandler():
                 wall_2 = corner_angle + indices[0]
 
             if wall_1 == 0 or wall_2 == 0:
+                #no walls found, continue
                 continue
 
             if wall_2_distance - corner > initial_distance + 1000:
+                #if the corner of the parking spot becomes the rightmost point
                 if counter == 3:
                     self.__can_controller.set_steering(0)
                     return self.wait_to_steer_back()
@@ -129,6 +131,7 @@ class ParkingHandler():
                     and (wall_2_distance - corner) > 50
                     and (wall_1_distance - corner) > 50
             ):
+                #if the front of the kart has passed the forward wall.
                 if counter == 3:
                     self.__can_controller.set_steering(-config["parking"]["steering_angle"])
                     return self.wait_to_stop()
